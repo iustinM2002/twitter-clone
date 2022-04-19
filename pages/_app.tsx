@@ -5,10 +5,12 @@ import { LoginProvider } from '../context/LoginContext';
 import { ProfileProvider } from '../context/ProfileContext';
 import {TweetProvider} from '../context/TweetContext';
 import {RandomUserProvider} from 'context/randomUserContext';
-import {  } from 'react-query';
+import { NavProvider } from 'context/NavContext';
+import { CommentProvider } from 'context/CommentContext';
+// react query
 import { Hydrate,QueryClient,QueryClientProvider } from 'react-query';
 const client = new QueryClient();
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  return <QueryClientProvider client={client}><Hydrate state={pageProps.dehydratedState}><LoginProvider><ProfileProvider><RandomUserProvider><TweetProvider><Component {...pageProps} /></TweetProvider></RandomUserProvider></ProfileProvider></LoginProvider>/</Hydrate></QueryClientProvider>
+  return <QueryClientProvider client={client}><Hydrate state={pageProps.dehydratedState}><LoginProvider><ProfileProvider><RandomUserProvider><TweetProvider><NavProvider><CommentProvider><Component {...pageProps} /></CommentProvider></NavProvider></TweetProvider></RandomUserProvider></ProfileProvider></LoginProvider></Hydrate></QueryClientProvider>
 }

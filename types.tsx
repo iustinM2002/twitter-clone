@@ -5,9 +5,9 @@ export interface Action{
     }
 }
 export interface dataContact{
-    username?:string,
     email:string,
     password:string
+    username?:string,
 }
 
 export interface SignInProps{

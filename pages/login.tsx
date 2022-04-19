@@ -49,6 +49,7 @@ const Login : NextPage<{initialContacts:any,onSubmitt:any}> = ({initialContacts,
             if(contact.email === data.email && contact.password === data.password){
                 Router.push('/homepage')
                 setCurrentUsername(contact.username)
+                sessionStorage.setItem('username',contact.username!);
                 setFormError('')
             }else{
                 setFormError('Email or password are incorrect, please try again.')

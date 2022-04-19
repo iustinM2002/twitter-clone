@@ -1,9 +1,11 @@
 import React,{useContext} from 'react';
-import { randomIntervalNumber } from '../../utils/utils';
-import { RandomContext } from 'context/randomUserContext';
+import { NextPage } from 'next';
+// components
 import RandomTweet from './RandomTweet';
+// context
+import { RandomContext } from 'context/randomUserContext';
 
-const RandomTweets = () => {
+const RandomTweets:NextPage = ():JSX.Element => {
   const [randomUserQuery,randomIpsumQuery] = useContext(RandomContext);
   return (
     <div>
