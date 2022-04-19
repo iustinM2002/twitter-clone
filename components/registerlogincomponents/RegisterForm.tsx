@@ -1,6 +1,5 @@
 import React,{useContext} from 'react';
 import { NextPage } from 'next';
-import Link from 'next/link';
 // font awesome setup and icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -11,22 +10,17 @@ import { LoginContext } from '../../context/LoginContext';
 import * as yup from "yup";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import {dataContact,FormValues} from '../../types'
+// styles
+const inputStyle = `w-[80%] border-[1px] border-[#7d7d7d9c] rounded-[0.3rem] px-[0.5rem] py-[1rem] mx-auto my-[1rem]`;
 
-interface dataContact{
-    username?:string,
-    email:string,
-    password:string
-}
-interface FormValues extends Record<string,any>{
-    email:string,
-    password:string
-}
 // yup schema
 const schema = yup.object().shape({
     username:yup.string().required().max(15),
     email:yup.string().required().email(),
     password:yup.string().required().min(6)
 });
+// add a new user to the database
 async function saveContact(contact:any){
     const response = await fetch('/api/register',{
         method: 'POST',
@@ -38,10 +32,6 @@ async function saveContact(contact:any){
     }
     return await response.json();
 }
-
-
-// styles
-const inputStyle = `w-[80%] border-[1px] border-[#7d7d7d9c] rounded-[0.3rem] px-[0.5rem] py-[1rem] mx-auto my-[1rem] `
 
 const RegisterForm:NextPage = (): JSX.Element => {
     // deconstruct context
@@ -56,9 +46,8 @@ const RegisterForm:NextPage = (): JSX.Element => {
     });
     const onSubmit = async (data:dataContact) =>{
         await saveContact({username:data.username,email:data.email,password:data.password});
-       
     }
-    // {username:data.username,email:data.email,password:data.password}
+    
   return (
     <div className='fixed w-full min-h-[100vh] bg-[#0000005b] flex justify-center items-center'>
         <form action="" onSubmit={handleSubmit(onSubmit)} className='bg-white w-[35rem]  mx-auto min-h-[68vh] rounded-[1rem] relative md:w-full md:min-h-[100vh] md:rounded-[0rem]'>
@@ -80,8 +69,6 @@ const RegisterForm:NextPage = (): JSX.Element => {
             <div className="min-h-[20vh] flex items-end md:min-h-[40vh]">
                 <button type='submit' className="w-[80%] my-[1rem] text-white bg-[#999999] py-[1rem] rounded-[5rem] mx-auto flex justify-center items-center font-bold">Next</button>
             </div>
-
-
         </form>
     </div>
   )

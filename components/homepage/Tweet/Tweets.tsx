@@ -10,8 +10,6 @@ const Tweets:NextPage = ():JSX.Element => {
   return (
     <div>  
         {addTweets.map((tweet:string) => <Tweet tweet={tweet}/>)}
-
-        
     </div>
   )
 }

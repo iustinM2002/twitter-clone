@@ -1,3 +1,4 @@
+// function to generate random numbers :)
 export const randomCommentShareNumber = () => {
     return Math.floor(Math.random() * 10000);
 }

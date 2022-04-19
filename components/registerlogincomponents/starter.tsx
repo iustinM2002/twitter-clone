@@ -8,7 +8,6 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import RegisterForm from './RegisterForm';
 // context
 import { LoginContext } from '../../context/LoginContext';
-
 // styles
 const iconText='text-[#1D9BF0] text-[2.5rem]';
 
@@ -29,7 +28,6 @@ const Starter:NextPage = () : JSX.Element => {
         <div className="form-starter flex flex-col justify-center px-[2rem] lg:w-[70%] lg:mx-auto ">
             <div className="icon lg:pt-[3rem] ">
             <FontAwesomeIcon className={iconText} icon={faTwitter} />
-
             </div>
             <div className="register-form flex flex-col ">
                 <h2 className='font-bold text-[4rem] py-[4rem] md:text-[2rem] sm:py-[2rem]'>Happening now</h2>
